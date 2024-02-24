@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('sex');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password', 20);
+            $table->string('password', 200);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes()->nullable();
