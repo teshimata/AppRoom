@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use App\Http\Requests\PostRequest;
-use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -13,14 +13,14 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
 
-    public function show(Post $post)
+    public function show(Post $post, Comment $comment)
     {
-        return view('posts.show')->with(['post' => $post]);
+        return view('posts.show')->with(['post' => $post, 'comments' => $comment->get(), 'post_id' => $post->id, 'comment_id' => $comment->id]);
     }
 
-    public function create(Category $category)
+    public function create()
     {
-        return view('posts.create')->with(['categories' => $category->get()]);
+        return view('posts.create');
     }
 
     public function store(Post $post, PostRequest $request)

@@ -10,27 +10,19 @@ class Post extends Model
     use HasFactory;
     
     protected $fillable = [
-    'title',
-    'image1',
-    'link1',
-    'body',
-    'category_id',
-    'user_id'
-];
+        'title',
+        'image1',
+        'body',
+        'comment'
+    ];
 
-    public function getByLimit(int $limit_count = 50)
+    public function comment()   
     {
-        return $this->orderBy('updated_at', 'DESC')->limit($limit_count)->get();
+        return $this->hasMany(Comment::class);  
     }
     
-    function getPaginateByLimit(int $limit_count = 5)
+    public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
-    
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
 }
