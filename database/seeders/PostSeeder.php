@@ -13,8 +13,8 @@ Run the database seeds.
     public function run()
     {
         DB::table('posts')->insert([
-            'user_id'=>1,
-            'category_id'=>1,
+            'user_id' => 1,
+            'category_id' => 1,
             'title' => 'Title',
             'body' => 'Body',
             'created_at' => now(),

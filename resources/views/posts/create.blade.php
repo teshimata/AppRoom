@@ -13,14 +13,6 @@
                 <input type="text" name="post[title]" placeholder="タイトル"/>
                 <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
             </div>
-            <div class="category">
-                <h2>Category</h2>
-                <select name="post[category_id]">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-            </div>
             <div class="image1">
                 <h2>画像</h2>
                 <input type="file" name="post[image1]" placeholder="画像を挿入する。" accept="image/png,image/jpeg,image/gif"/>
