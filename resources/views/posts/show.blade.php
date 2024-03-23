@@ -22,9 +22,21 @@
             <div class="content__post">
                 <p>{{ $post->body }}</p>    
             </div>
+            @if ($post->likes->contains('user_id', Auth::id()))
+                <form action="{{ route('likes.destroy', $post) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">いいね解除</button>
+                </form>
+            @else
+                <form action="{{ route('likes.store', $post) }}" method="POST">
+                    @csrf
+                    <button type="submit">いいね</button>
+                </form>
+            @endif
         </div>
         <div class="edit"><a href="/posts/{{ $post->id }}/edit">投稿内容の編集</a></div>
-        <div class="comment"><a href="/posts/{{ $post->id }}/comments/create">コメントの投稿</a></div>
+        <div class="comment"><a href="/posts/{{ $post->id }}/comments/create">コメントの投稿</a></div
         @foreach ($comments as $comment)
             @csrf
             <div class="comments">

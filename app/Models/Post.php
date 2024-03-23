@@ -13,13 +13,19 @@ class Post extends Model
         'title',
         'image1',
         'body',
-        'comment'
+        'comment',
+        'like'
     ];
 
     public function comment()   
     {
         return $this->hasMany(Comment::class);  
     }
+    
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
