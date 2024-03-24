@@ -14,14 +14,16 @@
                 {{ $post->title }}
             </h3>
         </div>
-        <div class='image1'>
-            <img src="{{ asset($post->image1) }}">
+        @if($post->image_url)
+        <div>
+            <img src="{{ $post->image_url }}" alt="画像が投稿されていません。"/>
         </div>
-        <div class="{{ url('post/'.$post->id) }}" method="post"></div>
+        @endif
         <div class="content">
             <div class="content__post">
                 <p>{{ $post->body }}</p>    
             </div>
+            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
             @if ($post->likes->contains('user_id', Auth::id()))
                 <form action="{{ route('likes.destroy', $post) }}" method="POST">
                     @csrf
