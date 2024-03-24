@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->string('title', 50);
             $table->string('body', 500);
-            $table->string('image1', 100)->nullable();
+            $table->string('image_url')->nullable();
             $table->string('image2', 100)->nullable();
             $table->string('image3', 100)->nullable();
             $table->string('link1', 200)->nullable();
