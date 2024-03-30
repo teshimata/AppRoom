@@ -18,6 +18,8 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'age' => ['required', 'integer', 'min:1'], // 年齢は1以上の整数
+            'sex' => ['required', 'integer', 'in:0,1,2'], // 性別は0, 1, 2のいずれか
         ];
     }
 }

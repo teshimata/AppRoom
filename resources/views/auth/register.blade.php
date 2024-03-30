@@ -15,6 +15,25 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+        
+        <!-- Age -->
+        <div class="mt-4">
+            <x-input-label for="age" :value="__('Age')" />
+            <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')" required />
+            <x-input-error :messages="$errors->get('age')" class="mt-2" />
+        </div>
+        
+        <!-- Sex -->
+        <div class="mt-4">
+            <x-input-label for="sex" :value="__('Sex')" />
+            <select id="sex" name="sex" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                <option value="">{{ __('Select Sex') }}</option>
+                <option value="0" {{ old('sex') == '0' ? 'selected' : '' }}>{{ __('Male') }}</option>
+                <option value="1" {{ old('sex') == '1' ? 'selected' : '' }}>{{ __('Female') }}</option>
+                <option value="2" {{ old('sex') == '2' ? 'selected' : '' }}>{{ __('Other') }}</option>
+            </select>
+            <x-input-error :messages="$errors->get('sex')" class="mt-2" />
+        </div>
 
         <!-- Password -->
         <div class="mt-4">
