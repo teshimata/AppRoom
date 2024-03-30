@@ -10,13 +10,11 @@ class Post extends Model
     use HasFactory;
     
     protected $fillable = [
-        'title',
-        'image_url',
-        'body',
-        'comment',
-        'like',
         'user_id',
-        'category_id'
+        'category_id',
+        'title',
+        'body',
+        'link_url',
     ];
     
     public function category()
@@ -33,6 +31,15 @@ class Post extends Model
         return $this->hasMany(Like::class);
     }
     
+    public function images()
+    {
+        return $this->hasMany(PostImage::class);
+    }
+    
+    public function links()
+    {
+        return $this->hasMany(PostLink::class);
+    }
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
