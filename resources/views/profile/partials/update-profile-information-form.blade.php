@@ -46,6 +46,25 @@
                 </div>
             @endif
         </div>
+        
+        <!-- Age -->
+        <div class="mt-4">
+            <x-input-label for="age" :value="__('Age')" />
+            <x-text-input id="age" name="age" type="number" class="mt-1 block w-full" :value="old('age', $user->age)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('age')" />
+        </div>
+        
+        <!-- Sex -->
+        <div class="mt-4">
+            <x-input-label for="sex" :value="__('Sex')" />
+            <select id="sex" name="sex" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                <option value="">{{ __('Select Sex') }}</option>
+                <option value="0" {{ old('sex', $user->sex) == '0' ? 'selected' : '' }}>{{ __('Male') }}</option>
+                <option value="1" {{ old('sex', $user->sex) == '1' ? 'selected' : '' }}>{{ __('Female') }}</option>
+                <option value="2" {{ old('sex', $user->sex) == '2' ? 'selected' : '' }}>{{ __('Other') }}</option>
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('sex')" />
+        </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
